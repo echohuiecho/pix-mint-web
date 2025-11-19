@@ -46,7 +46,7 @@ export default function Home() {
               className="text-xl font-bold"
               style={{ color: 'var(--text-primary)' }}
             >
-              Pix Mint
+              PixLab
             </span>
           </div>
         </div>
@@ -170,7 +170,7 @@ export default function Home() {
           <p
             className="text-xl mb-8 text-white/90 max-w-2xl mx-auto"
           >
-            Join thousands of creators who are already using Pix Mint to bring their ideas to life.
+            Join thousands of creators who are already using PixLab to bring their ideas to life.
           </p>
           <a
             href="https://apps.apple.com/app/pix-lab"
@@ -204,7 +204,7 @@ export default function Home() {
               className="text-lg font-semibold"
               style={{ color: 'var(--text-primary)' }}
             >
-              Pix Mint
+              PixLab
             </span>
           </div>
           <div className="flex flex-col md:flex-row items-center gap-4">
