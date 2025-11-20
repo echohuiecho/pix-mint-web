@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pix Mint - AI-Powered Creative Tools",
+  title: "MintBrush - AI-Powered Creative Tools",
   description: "Create amazing artwork, posters, and charts with AI",
 };
 

@@ -46,7 +46,7 @@ export default function Home() {
               className="text-xl font-bold"
               style={{ color: 'var(--text-primary)' }}
             >
-              PixLab
+              MintBrush
             </span>
           </div>
         </div>
@@ -61,7 +61,7 @@ export default function Home() {
           >
             Create Amazing Content
             <br />
-            <span style={{ color: 'var(--primary)' }}>Powered by AI</span>
+            <span style={{ color: 'var(--primary)' }}>AI-Powered Creative Tools</span>
           </h1>
           <p
             className="text-xl md:text-2xl mb-10 leading-relaxed"
@@ -170,10 +170,10 @@ export default function Home() {
           <p
             className="text-xl mb-8 text-white/90 max-w-2xl mx-auto"
           >
-            Join thousands of creators who are already using PixLab to bring their ideas to life.
+            Join thousands of creators who are already using MintBrush to bring their ideas to life.
           </p>
           <a
-            href="https://apps.apple.com/app/pix-lab"
+            href="https://apps.apple.com/app/mint-brush"
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:opacity-90 shadow-lg inline-block"
@@ -204,7 +204,7 @@ export default function Home() {
               className="text-lg font-semibold"
               style={{ color: 'var(--text-primary)' }}
             >
-              PixLab
+              MintBrush
             </span>
           </div>
           <div className="flex flex-col md:flex-row items-center gap-4">
@@ -235,7 +235,7 @@ export default function Home() {
               className="text-sm"
               style={{ color: 'var(--text-secondary)' }}
             >
-              © 2025 PixLab. All rights reserved.
+              © 2025 Noseborg. All rights reserved.
             </p>
           </div>
         </div>
