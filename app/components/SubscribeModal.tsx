@@ -16,8 +16,14 @@ export default function SubscribeModal({ isOpen, onClose }: SubscribeModalProps)
     e.preventDefault();
 
     // Validate email
+    const normalizedEmail = email.trim();
+    if (!normalizedEmail) {
+      setMessage({ type: 'error', text: '請輸入電子郵件地址' });
+      return;
+    }
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(normalizedEmail)) {
       setMessage({ type: 'error', text: '請輸入有效的電子郵件地址' });
       return;
     }
@@ -31,13 +37,13 @@ export default function SubscribeModal({ isOpen, onClose }: SubscribeModalProps)
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: normalizedEmail }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        setMessage({ type: 'success', text: '訂閱成功！我們會在第一時間通知你。' });
+        setMessage({ type: 'success', text: data.message || '訂閱成功！我們會在第一時間通知你。' });
         setEmail('');
         // Close modal after 2 seconds
         setTimeout(() => {
@@ -45,10 +51,15 @@ export default function SubscribeModal({ isOpen, onClose }: SubscribeModalProps)
           setMessage(null);
         }, 2000);
       } else {
-        setMessage({ type: 'error', text: data.error || '訂閱失敗，請稍後再試。' });
+        // Use server error message or fallback
+        setMessage({
+          type: 'error',
+          text: data.error || '訂閱失敗，請稍後再試。'
+        });
       }
     } catch (error) {
-      setMessage({ type: 'error', text: '訂閱失敗，請稍後再試。' });
+      console.error('Subscription error:', error);
+      setMessage({ type: 'error', text: '網路連線錯誤，請檢查網路後再試。' });
     } finally {
       setIsLoading(false);
     }
