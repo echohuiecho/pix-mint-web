@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import LessonNavigation from '../components/LessonNavigation';
 
-export default function Lesson1Step2Part3() {
+export default function Lesson1Step3() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--background-primary)' }}>
       {/* Navigation */}
@@ -48,101 +48,133 @@ export default function Lesson1Step2Part3() {
             className="text-4xl md:text-5xl font-bold mb-6"
             style={{ color: 'var(--text-primary)' }}
           >
-            🧩 3｜關鍵詞拆解：把話變成「AI 聽得懂」的描述
+            🤖 從文字到貼圖：幾個 AI「小工人」的合作
           </h1>
 
           <div
-            className="p-6 rounded-3xl mb-6"
+            className="p-6  rounded-3xl mb-6 text-xl"
             style={{
               backgroundColor: 'var(--background-secondary)',
               boxShadow: '0 4px 16px var(--shadow-md)',
             }}
           >
             <p
-              className="text-base leading-relaxed mb-4"
+              className="text-xl leading-relaxed mb-4"
               style={{ color: 'var(--text-secondary)' }}
             >
-              對模型來說，你那一句完整的句子，並不會被當成「一整塊」來理解。
+              一張看似簡單的 Social Energy 貼圖，背後其實經過了不同能力的合作。
             </p>
             <p
-              className="text-base leading-relaxed mb-4"
+              className="text-xl leading-relaxed mb-6"
               style={{ color: 'var(--text-secondary)' }}
             >
-              它會先拆成一個個較小的單位（可以想像成「字粒」），例如：
+              你可以把它想像成幾位「AI 小工人」一起幫忙：
             </p>
           </div>
 
-          {/* Image Placeholder - Generate with prompt: "An illustration showing words being broken down into smaller pieces, with colorful word tags or puzzle pieces connecting together. Playful design with soft shapes, showing how AI processes language." */}
+          {/* Image Placeholder - Generate with prompt: "Three friendly, playful AI worker characters collaborating together, each with a different role (emotion reader, scene analyzer, image designer). Soft, rounded, 3D felt-like style with googly eyes, working together harmoniously." */}
           <div
-            className="w-full h-64 md:h-80 rounded-3xl mb-6 flex items-center justify-center"
+            className="w-full h-64 md:h-80 rounded-3xl mb-8 flex items-center justify-center"
             style={{
-              backgroundColor: 'var(--background-light-purple)',
+              backgroundColor: 'var(--background-light-green)',
               boxShadow: '0 4px 16px var(--shadow-md)',
             }}
           >
-            <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
-              [圖片位置 - 生成提示見註釋]
-            </p>
+            <img
+              src="https://slowai-learn.sgp1.cdn.digitaloceanspaces.com/lesson-1/lesson-1-3-AI.jpg"
+              alt="Three friendly, playful AI worker characters collaborating together, each with a different role (emotion reader, scene analyzer, image designer). Soft, rounded, 3D felt-like style with googly eyes, working together harmoniously."
+              className="rounded-2xl h-full max-h-72 object-contain"
+            />
           </div>
 
-          <div
-            className="p-6 rounded-3xl mb-4"
-            style={{
-              backgroundColor: 'var(--background-secondary)',
-              boxShadow: '0 4px 16px var(--shadow-md)',
-            }}
-          >
-            <div className="flex flex-wrap gap-2 mb-4">
-              {['今日', 'social', 'energy', '用晒', '黏在', '沙發', '不動'].map((word) => (
-                <span
-                  key={word}
-                  className="px-3 py-1 rounded-xl text-sm font-medium"
-                  style={{
-                    backgroundColor: 'var(--background-darker)',
-                    color: 'var(--text-primary)',
-                    boxShadow: '0 2px 4px var(--shadow)',
-                  }}
-                >
-                  {word}
-                </span>
-              ))}
-            </div>
-            <p
-              className="text-base leading-relaxed mb-4"
-              style={{ color: 'var(--text-secondary)' }}
-            >
-              在模型的內部世界裡：
-            </p>
-            <ul className="list-disc list-inside mb-4 space-y-2" style={{ color: 'var(--text-secondary)' }}>
-              <li>「用晒」、「攰」、「不動」會比較靠近「低能量」、「疲憊」這一群字；</li>
-              <li>「沙發」、「床」、「被窩」會比較靠近「休息」、「放鬆」這一群字。</li>
-            </ul>
-            <p
-              className="text-base leading-relaxed mb-4"
-              style={{ color: 'var(--text-secondary)' }}
-            >
-              當模型嘗試幫你生成貼圖時，其實是在內心裡拼湊出一段大概的畫面描述，例如：
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
             <div
-              className="p-4 rounded-2xl my-4 border-l-4"
+              className="p-6 rounded-3xl"
               style={{
-                backgroundColor: 'var(--background-light-blue)',
-                borderColor: 'var(--color-purple)',
-                boxShadow: '0 2px 8px var(--shadow)',
+                backgroundColor: 'var(--background-secondary)',
+                boxShadow: '0 4px 16px var(--shadow-md)',
               }}
             >
+              <div className="text-4xl mb-3">😊</div>
+              <h3
+                className="text-xl font-bold mb-3"
+                style={{ color: 'var(--color-purple)' }}
+              >
+                情緒小工人
+              </h3>
               <p
-                className="text-base italic leading-relaxed"
+                className="text-xl leading-relaxed mb-3"
                 style={{ color: 'var(--text-secondary)' }}
               >
-                💭 「一個很累、energy 用盡的人，軟軟地黏在沙發上，表情無力，整體感覺是一個低能量但安全的空間。」
+                負責讀你句子裡的情緒線索：
+              </p>
+              <ul className="list-disc list-inside space-y-1 text-xl" style={{ color: 'var(--text-secondary)' }}>
+                <li>這是一種興奮？</li>
+                <li>還是「用光 energy」的疲累？</li>
+              </ul>
+            </div>
+
+            <div
+              className="p-6 rounded-3xl"
+              style={{
+                backgroundColor: 'var(--background-secondary)',
+                boxShadow: '0 4px 16px var(--shadow-md)',
+              }}
+            >
+              <div className="text-4xl mb-3">👤</div>
+              <h3
+                className="text-xl font-bold mb-3"
+                style={{ color: 'var(--color-purple)' }}
+              >
+                角色與場景小工人
+              </h3>
+              <p
+                className="text-xl leading-relaxed mb-3"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                留意你提到的身份與場景：
+              </p>
+              <ul className="list-disc list-inside space-y-1 text-xl" style={{ color: 'var(--text-secondary)' }}>
+                <li>上班、讀書、退休、照顧者…</li>
+                <li>在辦公室、課室、家裡、地鐵…</li>
+              </ul>
+            </div>
+
+            <div
+              className="p-6 rounded-3xl"
+              style={{
+                backgroundColor: 'var(--background-secondary)',
+                boxShadow: '0 4px 16px var(--shadow-md)',
+              }}
+            >
+              <div className="text-4xl mb-3">🎨</div>
+              <h3
+                className="text-xl font-bold mb-3"
+                style={{ color: 'var(--color-purple)' }}
+              >
+                畫面設計小工人
+              </h3>
+              <p
+                className="text-xl leading-relaxed"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                把前面得到的訊息整理成一段畫面說明，再交給圖像生成的部分，讓貼圖真正「長出來」。
               </p>
             </div>
+          </div>
+
+          <div
+            className="p-4 rounded-2xl"
+            style={{
+              backgroundColor: 'var(--background-darker)',
+              boxShadow: '0 2px 8px var(--shadow)',
+            }}
+          >
             <p
-              className="text-sm leading-relaxed"
-              style={{ color: 'var(--text-tertiary)' }}
+              className="text-xl leading-relaxed"
+              style={{ color: 'var(--text-secondary)' }}
             >
-              💡 這段描述，不一定會完整寫出來，但會成為圖像模型作畫時的重要參考。
+              💡 這些工作可以由不同的 AI 模型分開處理，而今天，大型語言模型把很多能力整合在同一個大腦裡，再加上圖像模型，才成為你現在看到的體驗。
             </p>
           </div>
         </section>

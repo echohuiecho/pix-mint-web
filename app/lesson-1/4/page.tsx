@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import LessonNavigation from '../components/LessonNavigation';
 
-export default function Lesson1Step2Part2() {
+export default function Lesson1Step2Part3() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--background-primary)' }}>
       {/* Navigation */}
@@ -48,98 +48,84 @@ export default function Lesson1Step2Part2() {
             className="text-4xl md:text-5xl font-bold mb-6"
             style={{ color: 'var(--text-primary)' }}
           >
-            👤🏢🏠 2｜角色與場景：誰在說？在哪裡？
+            🧩 關鍵詞拆解：把話變成「AI 聽得懂」的描述
           </h1>
 
           <div
-            className="p-6 rounded-3xl mb-6"
+            className="p-6 rounded-3xl mb-6 text-xl"
             style={{
               backgroundColor: 'var(--background-secondary)',
               boxShadow: '0 4px 16px var(--shadow-md)',
             }}
           >
             <p
-              className="text-base leading-relaxed mb-4"
+              className="text-xl leading-relaxed mb-4"
               style={{ color: 'var(--text-secondary)' }}
             >
-              同一句「好攰」，上班族、學生、退休人士腦中的畫面往往完全不同。
+              對模型來說，你那一句完整的句子，並不會被當成「一整塊」來理解。
             </p>
             <p
-              className="text-base leading-relaxed mb-4"
+              className="text-xl leading-relaxed mb-4"
               style={{ color: 'var(--text-secondary)' }}
             >
-              AI 會嘗試在你的文字裡，抓出一些關於身份與場景的提示。
-            </p>
-          </div>
-
-          {/* Image Placeholder - Generate with prompt: "A friendly illustration showing different people in different settings (office worker, student, retiree) with soft, rounded character designs. Each person in their own environment, styled in a playful, approachable way." */}
-          <div
-            className="w-full h-64 md:h-80 rounded-3xl mb-6 flex items-center justify-center"
-            style={{
-              backgroundColor: 'var(--background-light-green)',
-              boxShadow: '0 4px 16px var(--shadow-md)',
-            }}
-          >
-            <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
-              [圖片位置 - 生成提示見註釋]
+              它會先拆成一個個較小的單位（可以想像成「字粒」），例如：
             </p>
           </div>
 
           <div
-            className="p-6 rounded-3xl mb-4"
+            className="p-6 rounded-3xl mb-4 text-xl"
             style={{
               backgroundColor: 'var(--background-secondary)',
               boxShadow: '0 4px 16px var(--shadow-md)',
             }}
           >
-            <p className="text-base font-semibold mb-4" style={{ color: 'var(--text-primary)' }}>
-              💡 例如：
-            </p>
-            <div className="space-y-4">
-              <div className="p-4 rounded-2xl" style={{ backgroundColor: 'var(--background-light-blue)' }}>
-                <p style={{ color: 'var(--text-secondary)' }}>
-                  <strong style={{ color: 'var(--color-purple)' }}>提到「開會」、「deadline」、「老闆」</strong> → 上班族的情境 💼
-                </p>
-              </div>
-              <div className="p-4 rounded-2xl" style={{ backgroundColor: 'var(--background-light-purple)' }}>
-                <p style={{ color: 'var(--text-secondary)' }}>
-                  <strong style={{ color: 'var(--color-purple)' }}>提到「交功課」、「考試」、「上課」</strong> → 在校學生的情境 🎓
-                </p>
-              </div>
-              <div className="p-4 rounded-2xl" style={{ backgroundColor: 'var(--background-light-orange)' }}>
-                <p style={{ color: 'var(--text-secondary)' }}>
-                  <strong style={{ color: 'var(--color-purple)' }}>提到「孫」、「飲茶」、「公園」</strong> → 比較接近退休生活 🌴
-                </p>
-              </div>
+            <div className="flex flex-wrap gap-2 mb-4 text-xl">
+              {['今日', 'social', 'energy', '用晒', '黏在', '沙發', '不動'].map((word) => (
+                <span
+                  key={word}
+                  className="px-3 py-1 rounded-xl text-sm font-medium"
+                  style={{
+                    backgroundColor: 'var(--background-darker)',
+                    color: 'var(--text-primary)',
+                    boxShadow: '0 2px 4px var(--shadow)',
+                  }}
+                >
+                  {word}
+                </span>
+              ))}
             </div>
-          </div>
-
-          <div
-            className="p-4 rounded-2xl"
-            style={{
-              backgroundColor: 'var(--background-darker)',
-              boxShadow: '0 2px 8px var(--shadow)',
-            }}
-          >
             <p
-              className="text-sm leading-relaxed"
+              className="text-xl leading-relaxed mb-4"
               style={{ color: 'var(--text-secondary)' }}
             >
-              這種做法，和以前的
-              <strong style={{ color: 'var(--color-purple)' }}> 實體與類別識別（Entity / Classification）任務</strong>有點相似：
-              模型會嘗試找出：句子裡有哪些人、哪些地方、哪些物件。
+              在模型的內部世界裡：
             </p>
-            <p
-              className="text-sm leading-relaxed mt-2"
-              style={{ color: 'var(--text-secondary)' }}
-            >
-              🎨 在貼圖上，這會影響：
-            </p>
-            <ul className="list-disc list-inside mt-2 space-y-1" style={{ color: 'var(--text-secondary)' }}>
-              <li>角色長什麼樣子</li>
-              <li>背景在什麼地方</li>
-              <li>旁邊出現什麼東西</li>
+            <ul className="list-disc list-inside mb-4 space-y-2" style={{ color: 'var(--text-secondary)' }}>
+              <li>「用晒」、「攰」、「不動」會比較靠近「低能量」、「疲憊」這一群字；</li>
+              <li>「沙發」、「床」、「被窩」會比較靠近「休息」、「放鬆」這一群字。</li>
             </ul>
+            <p
+              className="text-xl leading-relaxed mb-4"
+              style={{ color: 'var(--text-secondary)' }}
+            >
+              當模型嘗試幫你生成貼圖時，其實是在內心裡拼湊出一段大概的畫面描述，例如：
+            </p>
+            <div
+              className="p-4 rounded-2xl my-4 border-l-4"
+              style={{
+                backgroundColor: 'var(--background-light-blue)',
+                borderColor: 'var(--color-purple)',
+                boxShadow: '0 2px 8px var(--shadow)',
+              }}
+            >
+              <p
+                className="text-base italic leading-relaxed"
+                style={{ color: 'var(--text-secondary)' }}
+              >
+                💭 「一個很累、energy 用盡的人，軟軟地黏在沙發上，表情無力，整體感覺是一個低能量但安全的空間。」
+              </p>
+            </div>
+
           </div>
         </section>
 

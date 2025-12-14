@@ -65,9 +65,11 @@ export default function Lesson1Review() {
               boxShadow: '0 4px 16px var(--shadow-md)',
             }}
           >
-            <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
-              [圖片位置 - 生成提示見註釋]
-            </p>
+            <img
+              src="https://slowai-learn.sgp1.cdn.digitaloceanspaces.com/lesson-1/lesson-1-done.jpg"
+              alt="A celebratory illustration showing someone completing a learning journey, with checkmarks, stars, and a sense of achievement. Warm, encouraging colors, playful design."
+              className="rounded-2xl h-full max-h-72 object-contain"
+            />
           </div>
 
           <div

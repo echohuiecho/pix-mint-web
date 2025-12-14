@@ -53,15 +53,17 @@ export default function Lesson1Intro() {
 
           {/* Image Placeholder - Generate with prompt: "A friendly, modern illustration showing a person writing a message on their phone, with soft pastel colors, rounded shapes, and a warm, approachable feeling. The style should be playful and clean, similar to 3D felt-like characters with googly eyes." */}
           <div
-            className="w-full h-64 md:h-80 rounded-3xl mb-8 flex items-center justify-center"
+            className="p-8 rounded-3xl mb-8 flex justify-center"
             style={{
-              backgroundColor: 'var(--background-light-purple)',
+              backgroundColor: 'var(--background-secondary)',
               boxShadow: '0 4px 16px var(--shadow-md)',
             }}
           >
-            <p className="text-sm" style={{ color: 'var(--text-tertiary)' }}>
-              [圖片位置 - 生成提示見註釋]
-            </p>
+            <img
+              src="https://slowai-learn.sgp1.cdn.digitaloceanspaces.com/lesson-1/lesson-1-1.jpg"
+              alt="A friendly, modern illustration showing a person writing a message on their phone, with soft pastel colors and a warm, approachable feeling"
+              className="rounded-2xl h-full max-h-72 object-contain"
+            />
           </div>
 
           <div
@@ -80,11 +82,11 @@ export default function Lesson1Intro() {
             <ul className="list-none space-y-3 mb-6">
               <li className="flex items-center gap-3">
                 <span className="text-2xl">✨</span>
-                <span style={{ color: 'var(--text-secondary)' }}>一點點好奇心</span>
+                <span className="text-xl" style={{ color: 'var(--text-secondary)' }}>一點點好奇心</span>
               </li>
               <li className="flex items-center gap-3">
                 <span className="text-2xl">💭</span>
-                <span style={{ color: 'var(--text-secondary)' }}>一句你今天真實的心情說話</span>
+                <span className="text-xl" style={{ color: 'var(--text-secondary)' }}>一句你今天真實的心情說話</span>
               </li>
             </ul>
           </div>
@@ -102,7 +104,7 @@ export default function Lesson1Intro() {
             >
               🚀 我們會一起走過三個步驟：
             </h2>
-            <div className="space-y-4">
+            <div className="text-xl space-y-4">
               <div className="flex items-start gap-4 p-4 rounded-2xl" style={{ backgroundColor: 'var(--background-light-blue)' }}>
                 <div className="text-3xl font-bold" style={{ color: 'var(--color-purple)' }}>1</div>
                 <div>
@@ -153,8 +155,6 @@ export default function Lesson1Intro() {
             </Link>
           </div>
         </section>
-
-        <LessonNavigation currentPage={1} totalPages={7} />
       </div>
     </div>
   );
