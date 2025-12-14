@@ -1,37 +1,61 @@
 @import "tailwindcss";
 
 :root {
-  /* Pix Mint Color Scheme - Light Mode */
-  --primary: #4A90E2;
-  --accent: #42E100;
-  --text-primary: #1A1A1A;
-  --text-secondary: #666;
-  --text-tertiary: #999;
-  --text-dark: #333;
-  --background-primary: #F5F7FA;
+  /* Modern Playful UI Theme - Based on Image Design */
+  /* Primary Background - Light muted sky blue */
+  --background-primary: #DCEFF7;
+
+  /* Content Backgrounds - White */
   --background-secondary: #ffffff;
   --background-card: #ffffff;
-  --background-darker: #E8EAED;
+
+  /* Vibrant Accent Colors */
+  --color-purple: #8C50C8;
+  --color-blue: #50B4E6;
+  --color-orange: #FFA03C;
+  --color-green: #78D250;
+  --color-yellow: #FFBE3C;
+
+  /* Gradient Colors for Buttons */
+  --gradient-purple-start: #8C50C8;
+  --gradient-blue-end: #50B4E6;
+
+  /* Primary Action Color (using vibrant blue) */
+  --primary: #50B4E6;
+  --accent: #8C50C8;
+
+  /* Text Colors */
+  --text-primary: #1A1A1A;
+  --text-secondary: #666666;
+  --text-tertiary: #999999;
+  --text-dark: #333333;
+
+  /* Background Variants */
+  --background-darker: #F0F5F8;
+  --background-light-purple: #F5E8FF;
+  --background-light-orange: #FFF4E8;
+  --background-light-green: #F0FCE8;
+  --background-light-blue: #E8F5FF;
+
+  /* Borders */
   --border: #E5E5E5;
   --border-light: #F0F0F0;
-  --shadow: rgba(0, 0, 0, 0.15);
+
+  /* Soft Shadows */
+  --shadow: rgba(0, 0, 0, 0.08);
+  --shadow-md: rgba(0, 0, 0, 0.12);
+  --shadow-lg: rgba(0, 0, 0, 0.15);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary: #4A90E2;
-    --accent: #42E100;
-    --text-primary: #ffffff;
-    --text-secondary: #ccc;
-    --text-tertiary: #999;
-    --text-dark: #666;
-    --background-primary: #000000;
-    --background-secondary: #1a1a1a;
-    --background-card: #1a1a1a;
-    --background-darker: #0a0a0a;
-    --border: #333;
-    --border-light: #2a2a2a;
-    --shadow: rgba(0, 0, 0, 0.3);
+    /* Keep light theme for now - can be customized later */
+    --background-primary: #DCEFF7;
+    --background-secondary: #ffffff;
+    --background-card: #ffffff;
+    --text-primary: #1A1A1A;
+    --text-secondary: #666666;
+    --text-tertiary: #999999;
   }
 }
 
@@ -46,4 +70,38 @@ body {
   background: var(--background-primary);
   color: var(--text-primary);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global styles for rounded corners and soft shadows */
+* {
+  box-sizing: border-box;
+}
+
+/* Utility classes for common design patterns */
+.card {
+  background: var(--background-card);
+  border-radius: 24px;
+  box-shadow: 0 4px 16px var(--shadow);
+  padding: 24px;
+}
+
+.button-primary {
+  background: linear-gradient(90deg, var(--gradient-purple-start) 0%, var(--gradient-blue-end) 100%);
+  color: white;
+  border-radius: 16px;
+  font-weight: 600;
+  padding: 12px 32px;
+  box-shadow: 0 4px 12px rgba(140, 80, 200, 0.25);
+  transition: all 0.2s ease;
+}
+
+.button-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(140, 80, 200, 0.3);
+}
+
+.button-primary:active {
+  transform: translateY(0);
 }

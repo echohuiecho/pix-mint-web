@@ -12,10 +12,11 @@ export default function TermsOfService() {
         <div className="flex justify-between items-center">
           <Link href="/" className="flex items-center gap-2">
             <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center text-xl font-bold"
+              className="w-10 h-10 rounded-2xl flex items-center justify-center text-xl font-bold"
               style={{
-                background: 'linear-gradient(135deg, #4A90E2 0%, #42E100 100%)',
+                background: 'linear-gradient(90deg, var(--gradient-purple-start) 0%, var(--gradient-blue-end) 100%)',
                 color: 'white',
+                boxShadow: '0 2px 8px var(--shadow)',
               }}
             >
               P
@@ -29,10 +30,11 @@ export default function TermsOfService() {
           </Link>
           <Link
             href="/"
-            className="px-6 py-2.5 rounded-xl font-semibold transition-all hover:opacity-90"
+            className="px-6 py-2.5 rounded-2xl font-semibold transition-all hover:scale-105"
             style={{
-              backgroundColor: 'var(--primary)',
+              background: 'linear-gradient(90deg, var(--gradient-purple-start) 0%, var(--gradient-blue-end) 100%)',
               color: 'white',
+              boxShadow: '0 4px 12px rgba(140, 80, 200, 0.25)',
             }}
           >
             Back to Home
@@ -59,7 +61,7 @@ export default function TermsOfService() {
           <section>
             <h2
               className="text-2xl font-bold mb-4"
-              style={{ color: 'var(--accent)' }}
+              style={{ color: 'var(--color-purple)' }}
             >
               1. Acceptance of Terms
             </h2>
@@ -74,7 +76,7 @@ export default function TermsOfService() {
           <section>
             <h2
               className="text-2xl font-bold mb-4"
-              style={{ color: 'var(--accent)' }}
+              style={{ color: 'var(--color-purple)' }}
             >
               2. Eligibility
             </h2>
@@ -89,7 +91,7 @@ export default function TermsOfService() {
           <section>
             <h2
               className="text-2xl font-bold mb-4"
-              style={{ color: 'var(--accent)' }}
+              style={{ color: 'var(--color-purple)' }}
             >
               3. Accounts and Security
             </h2>
@@ -104,7 +106,7 @@ export default function TermsOfService() {
           <section>
             <h2
               className="text-2xl font-bold mb-4"
-              style={{ color: 'var(--accent)' }}
+              style={{ color: 'var(--color-purple)' }}
             >
               4. Content Policy
             </h2>
@@ -131,7 +133,7 @@ export default function TermsOfService() {
           <section>
             <h2
               className="text-2xl font-bold mb-4"
-              style={{ color: 'var(--accent)' }}
+              style={{ color: 'var(--color-purple)' }}
             >
               5. User Content and License
             </h2>
@@ -152,7 +154,7 @@ export default function TermsOfService() {
           <section>
             <h2
               className="text-2xl font-bold mb-4"
-              style={{ color: 'var(--accent)' }}
+              style={{ color: 'var(--color-purple)' }}
             >
               6. Prohibited Activities
             </h2>
@@ -173,7 +175,7 @@ export default function TermsOfService() {
           <section>
             <h2
               className="text-2xl font-bold mb-4"
-              style={{ color: 'var(--accent)' }}
+              style={{ color: 'var(--color-purple)' }}
             >
               7. In-App Purchases and AI Credits
             </h2>
@@ -194,7 +196,7 @@ export default function TermsOfService() {
           <section>
             <h2
               className="text-2xl font-bold mb-4"
-              style={{ color: 'var(--accent)' }}
+              style={{ color: 'var(--color-purple)' }}
             >
               8. Intellectual Property
             </h2>
@@ -209,7 +211,7 @@ export default function TermsOfService() {
           <section>
             <h2
               className="text-2xl font-bold mb-4"
-              style={{ color: 'var(--accent)' }}
+              style={{ color: 'var(--color-purple)' }}
             >
               9. Termination
             </h2>
@@ -224,7 +226,7 @@ export default function TermsOfService() {
           <section>
             <h2
               className="text-2xl font-bold mb-4"
-              style={{ color: 'var(--accent)' }}
+              style={{ color: 'var(--color-purple)' }}
             >
               10. AI Service Disclaimers
             </h2>
@@ -245,7 +247,7 @@ export default function TermsOfService() {
           <section>
             <h2
               className="text-2xl font-bold mb-4"
-              style={{ color: 'var(--accent)' }}
+              style={{ color: 'var(--color-purple)' }}
             >
               11. General Disclaimers
             </h2>
@@ -260,7 +262,7 @@ export default function TermsOfService() {
           <section>
             <h2
               className="text-2xl font-bold mb-4"
-              style={{ color: 'var(--accent)' }}
+              style={{ color: 'var(--color-purple)' }}
             >
               12. Limitation of Liability
             </h2>
@@ -275,7 +277,7 @@ export default function TermsOfService() {
           <section>
             <h2
               className="text-2xl font-bold mb-4"
-              style={{ color: 'var(--accent)' }}
+              style={{ color: 'var(--color-purple)' }}
             >
               13. Third-Party Services
             </h2>
@@ -290,7 +292,7 @@ export default function TermsOfService() {
           <section>
             <h2
               className="text-2xl font-bold mb-4"
-              style={{ color: 'var(--accent)' }}
+              style={{ color: 'var(--color-purple)' }}
             >
               14. Changes to Terms
             </h2>
@@ -305,7 +307,7 @@ export default function TermsOfService() {
           <section>
             <h2
               className="text-2xl font-bold mb-4"
-              style={{ color: 'var(--accent)' }}
+              style={{ color: 'var(--color-purple)' }}
             >
               15. Contact
             </h2>
@@ -319,25 +321,25 @@ export default function TermsOfService() {
         </div>
 
         {/* Footer Links */}
-        <div className="mt-12 pt-8 border-t flex flex-wrap gap-6 justify-center" style={{ borderColor: 'var(--border)' }}>
+        <div className="mt-12 pt-8 flex flex-wrap gap-6 justify-center">
           <Link
             href="/"
             className="text-sm hover:opacity-70 transition-opacity"
-            style={{ color: 'var(--primary)' }}
+            style={{ color: 'var(--color-purple)' }}
           >
             Home
           </Link>
           <Link
             href="/learn-more"
             className="text-sm hover:opacity-70 transition-opacity"
-            style={{ color: 'var(--primary)' }}
+            style={{ color: 'var(--color-purple)' }}
           >
             Learn More
           </Link>
           <Link
             href="/privacy-policy"
             className="text-sm hover:opacity-70 transition-opacity"
-            style={{ color: 'var(--primary)' }}
+            style={{ color: 'var(--color-purple)' }}
           >
             Privacy Policy
           </Link>

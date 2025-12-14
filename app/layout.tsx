@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MintBrush - AI-Powered Creative Tools",
-  description: "Create amazing artwork, posters, and charts with AI",
+  title: "slowAI - 慢慢理解 AI",
+  description: "不需要技術背景，只需要一點好奇心。我們會一起走過 AI 如何理解你的文字，並轉換成視覺內容的過程。",
 };
 
 export default function RootLayout({

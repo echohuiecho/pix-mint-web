@@ -1,36 +1,43 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
+import SubscribeModal from '../components/SubscribeModal';
 
 export default function LearnMore() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--background-primary)' }}>
+      <SubscribeModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
       {/* Navigation */}
       <nav className="max-w-7xl mx-auto px-5 py-6">
         <div className="flex justify-between items-center">
           <Link href="/" className="flex items-center gap-2">
             <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center text-xl font-bold"
+              className="w-10 h-10 rounded-2xl flex items-center justify-center text-xl font-bold"
               style={{
-                background: 'linear-gradient(135deg, #4A90E2 0%, #42E100 100%)',
+                background: 'linear-gradient(90deg, var(--gradient-purple-start) 0%, var(--gradient-blue-end) 100%)',
                 color: 'white',
+                boxShadow: '0 2px 8px var(--shadow)',
               }}
             >
-              P
+              S
             </div>
             <span
               className="text-xl font-bold"
               style={{ color: 'var(--text-primary)' }}
             >
-              Pix Mint
+              slowAI
             </span>
           </Link>
           <Link
             href="/"
-            className="px-6 py-2.5 rounded-xl font-semibold transition-all hover:opacity-90"
+            className="px-6 py-2.5 rounded-2xl font-semibold transition-all hover:scale-105"
             style={{
-              backgroundColor: 'var(--primary)',
+              background: 'linear-gradient(90deg, var(--gradient-purple-start) 0%, var(--gradient-blue-end) 100%)',
               color: 'white',
+              boxShadow: '0 4px 12px rgba(140, 80, 200, 0.25)',
             }}
           >
             Back to Home
@@ -64,12 +71,15 @@ export default function LearnMore() {
 
           <div className="space-y-8">
             <div
-              className="p-6 rounded-2xl"
-              style={{ backgroundColor: 'var(--background-secondary)' }}
+              className="p-6 rounded-3xl"
+              style={{
+                backgroundColor: 'var(--background-secondary)',
+                boxShadow: '0 4px 16px var(--shadow-md)',
+              }}
             >
               <h3
                 className="text-2xl font-bold mb-3"
-                style={{ color: 'var(--primary)' }}
+                style={{ color: 'var(--color-purple)' }}
               >
                 🎨 AI Create
               </h3>
@@ -82,12 +92,15 @@ export default function LearnMore() {
             </div>
 
             <div
-              className="p-6 rounded-2xl"
-              style={{ backgroundColor: 'var(--background-secondary)' }}
+              className="p-6 rounded-3xl"
+              style={{
+                backgroundColor: 'var(--background-secondary)',
+                boxShadow: '0 4px 16px var(--shadow-md)',
+              }}
             >
               <h3
                 className="text-2xl font-bold mb-3"
-                style={{ color: 'var(--primary)' }}
+                style={{ color: 'var(--color-purple)' }}
               >
                 📰 AI Poster
               </h3>
@@ -100,12 +113,15 @@ export default function LearnMore() {
             </div>
 
             <div
-              className="p-6 rounded-2xl"
-              style={{ backgroundColor: 'var(--background-secondary)' }}
+              className="p-6 rounded-3xl"
+              style={{
+                backgroundColor: 'var(--background-secondary)',
+                boxShadow: '0 4px 16px var(--shadow-md)',
+              }}
             >
               <h3
                 className="text-2xl font-bold mb-3"
-                style={{ color: 'var(--primary)' }}
+                style={{ color: 'var(--color-purple)' }}
               >
                 🗺️ AI Chart
               </h3>
@@ -211,46 +227,46 @@ export default function LearnMore() {
         <section
           className="rounded-3xl p-12 text-center"
           style={{
-            background: 'linear-gradient(135deg, #4A90E2 0%, #42E100 100%)',
+            background: 'linear-gradient(90deg, var(--gradient-purple-start) 0%, var(--gradient-blue-end) 100%)',
+            boxShadow: '0 8px 32px rgba(140, 80, 200, 0.25)',
           }}
         >
           <h2
             className="text-3xl font-bold mb-4 text-white"
           >
-            Ready to Start Creating?
+            準備好開始學習了嗎？
           </h2>
           <p
             className="text-lg mb-6 text-white/90"
           >
-            Download Pix Mint and bring your ideas to life
+            第一課免費開放，之後的課程和 slowAI App 正式上架時，我們會第一時間通知你。
           </p>
-          <a
-            href="https://apps.apple.com/app/pix-lab"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:opacity-90 shadow-lg inline-block"
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="px-8 py-4 rounded-2xl font-semibold text-lg transition-all hover:scale-105 shadow-lg inline-block"
             style={{
               backgroundColor: 'white',
-              color: 'var(--primary)',
+              color: 'var(--color-purple)',
+              boxShadow: '0 4px 16px rgba(255, 255, 255, 0.3)',
             }}
           >
-            Download Now
-          </a>
+            訂閱通知
+          </button>
         </section>
 
         {/* Legal Links */}
-        <div className="mt-12 pt-8 border-t flex flex-wrap gap-6 justify-center" style={{ borderColor: 'var(--border)' }}>
+        <div className="mt-12 pt-8 flex flex-wrap gap-6 justify-center">
           <Link
             href="/terms-of-service"
             className="text-sm hover:opacity-70 transition-opacity"
-            style={{ color: 'var(--primary)' }}
+            style={{ color: 'var(--color-purple)' }}
           >
             Terms of Service
           </Link>
           <Link
             href="/privacy-policy"
             className="text-sm hover:opacity-70 transition-opacity"
-            style={{ color: 'var(--primary)' }}
+            style={{ color: 'var(--color-purple)' }}
           >
             Privacy Policy
           </Link>

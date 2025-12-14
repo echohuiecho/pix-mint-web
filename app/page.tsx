@@ -1,52 +1,58 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
+import SubscribeModal from './components/SubscribeModal';
 
 const FEATURES = [
   {
-    id: 'ai-create',
-    title: 'AI Create',
-    description: 'Transform your ideas into stunning artwork with the power of artificial intelligence. Generate unique, creative visuals in seconds.',
-    icon: '🎨',
+    id: 'learn',
+    title: '循序漸進學習',
+    description: '從基礎開始，一步步理解 AI 如何理解你的文字，並轉換成視覺內容。不需要技術背景，只需要好奇心。',
+    icon: '📚',
     gradient: 'linear-gradient(135deg, #FFB6E1 0%, #FFC6A8 100%)',
   },
   {
-    id: 'ai-poster',
-    title: 'AI Poster',
-    description: 'Design professional posters effortlessly. Our AI helps you create eye-catching designs that stand out from the crowd.',
-    icon: '📰',
+    id: 'practice',
+    title: '實際動手操作',
+    description: '每一課都有實際練習，讓你親身體驗 AI 的運作方式，從中學習如何更好地與 AI 協作。',
+    icon: '✍️',
     gradient: 'linear-gradient(135deg, #C5A8FF 0%, #FFD1B6 100%)',
   },
   {
-    id: 'ai-chart',
-    title: 'AI Chart',
-    description: 'Create flowcharts, diagrams, and visual representations of complex ideas. Perfect for presentations and documentation.',
-    icon: '🗺️',
+    id: 'understand',
+    title: '深入理解原理',
+    description: '不只是使用工具，而是真正理解 AI 背後的運作邏輯，讓你能夠更有效地運用 AI 技術。',
+    icon: '🧠',
     gradient: 'linear-gradient(135deg, #A8DAFF 0%, #FFB6D9 100%)',
   },
 ] as const;
 
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--background-primary)' }}>
+      <SubscribeModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
       {/* Navigation */}
       <nav className="max-w-7xl mx-auto px-5 py-6">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">
             <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center text-xl font-bold"
+              className="w-10 h-10 rounded-2xl flex items-center justify-center text-xl font-bold"
               style={{
-                background: 'linear-gradient(135deg, #4A90E2 0%, #42E100 100%)',
+                background: 'linear-gradient(90deg, var(--gradient-purple-start) 0%, var(--gradient-blue-end) 100%)',
                 color: 'white',
+                boxShadow: '0 2px 8px var(--shadow)',
               }}
             >
-              P
+              S
             </div>
             <span
               className="text-xl font-bold"
               style={{ color: 'var(--text-primary)' }}
             >
-              MintBrush
+              slowAI
             </span>
           </div>
         </div>
@@ -59,39 +65,40 @@ export default function Home() {
             className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
             style={{ color: 'var(--text-primary)' }}
           >
-            Create Amazing Content
+            慢慢理解 AI
             <br />
-            <span style={{ color: 'var(--primary)' }}>AI-Powered Creative Tools</span>
+            <span style={{ color: 'var(--color-purple)' }}>從第一課開始</span>
           </h1>
           <p
             className="text-xl md:text-2xl mb-10 leading-relaxed"
             style={{ color: 'var(--text-secondary)' }}
           >
-            Transform your ideas into stunning artwork, beautiful posters, and professional charts with the power of artificial intelligence.
+            不需要技術背景，只需要一點好奇心。我們會一起走過 AI 如何理解你的文字，並轉換成視覺內容的過程。
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="#download"
-              className="px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:opacity-90 shadow-lg text-center"
-              style={{
-                backgroundColor: 'var(--primary)',
-                color: 'white',
-                boxShadow: '0 4px 12px rgba(74, 144, 226, 0.3)',
-              }}
-            >
-              Start Creating
-            </a>
             <Link
-              href="/learn-more"
-              className="px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:opacity-80 border-2 text-center"
+              href="/lesson-1"
+              className="px-8 py-4 rounded-2xl font-semibold text-lg transition-all hover:scale-105 text-center"
               style={{
-                borderColor: 'var(--primary)',
-                color: 'var(--primary)',
-                backgroundColor: 'transparent',
+                background: 'linear-gradient(90deg, var(--gradient-purple-start) 0%, var(--gradient-blue-end) 100%)',
+                color: 'white',
+                boxShadow: '0 4px 16px rgba(140, 80, 200, 0.3)',
               }}
             >
-              Learn More
+              開始第一課（免費）
             </Link>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="px-8 py-4 rounded-2xl font-semibold text-lg transition-all hover:opacity-80 border-2 text-center"
+              style={{
+                borderColor: 'var(--color-blue)',
+                color: 'var(--color-blue)',
+                backgroundColor: 'transparent',
+                boxShadow: '0 2px 8px var(--shadow)',
+              }}
+            >
+              訂閱通知
+            </button>
           </div>
         </div>
       </section>
@@ -103,13 +110,13 @@ export default function Home() {
             className="text-4xl md:text-5xl font-bold mb-4"
             style={{ color: 'var(--text-primary)' }}
           >
-            Powerful Features
+            課程特色
           </h2>
           <p
             className="text-lg max-w-2xl mx-auto"
             style={{ color: 'var(--text-secondary)' }}
           >
-            Everything you need to bring your creative vision to life
+            用最簡單的方式，理解 AI 背後的運作原理
           </p>
         </div>
 
@@ -117,19 +124,22 @@ export default function Home() {
           {FEATURES.map((feature) => (
             <div
               key={feature.id}
-              className="rounded-3xl overflow-hidden shadow-lg transition-all hover:scale-105 hover:shadow-xl"
+              className="rounded-3xl overflow-hidden transition-all hover:scale-105"
               style={{
-                boxShadow: '0 4px 12px var(--shadow)',
+                backgroundColor: 'var(--background-secondary)',
+                boxShadow: '0 4px 20px var(--shadow-md)',
               }}
             >
               <div
                 className="h-full p-8 flex flex-col"
-                style={{ backgroundColor: 'var(--background-secondary)' }}
               >
                 {/* Icon */}
                 <div
-                  className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl mb-6"
-                  style={{ background: feature.gradient }}
+                  className="w-20 h-20 rounded-3xl flex items-center justify-center text-4xl mb-6"
+                  style={{
+                    background: feature.gradient,
+                    boxShadow: '0 2px 12px var(--shadow)',
+                  }}
                 >
                   {feature.icon}
                 </div>
@@ -158,53 +168,53 @@ export default function Home() {
         <div
           className="rounded-3xl p-12 md:p-16 text-center"
           style={{
-            background: 'linear-gradient(135deg, #4A90E2 0%, #42E100 100%)',
-            boxShadow: '0 8px 24px rgba(74, 144, 226, 0.3)',
+            background: 'linear-gradient(90deg, var(--gradient-purple-start) 0%, var(--gradient-blue-end) 100%)',
+            boxShadow: '0 8px 32px rgba(140, 80, 200, 0.25)',
           }}
         >
           <h2
             className="text-4xl md:text-5xl font-bold mb-4 text-white"
           >
-            Ready to Get Started?
+            準備好開始學習了嗎？
           </h2>
           <p
             className="text-xl mb-8 text-white/90 max-w-2xl mx-auto"
           >
-            Join thousands of creators who are already using MintBrush to bring their ideas to life.
+            第一課免費開放，之後的課程和 slowAI App 正式上架時，我們會第一時間通知你。
           </p>
-          <a
-            href="https://apps.apple.com/app/mint-brush"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-4 rounded-xl font-semibold text-lg transition-all hover:opacity-90 shadow-lg inline-block"
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="px-8 py-4 rounded-2xl font-semibold text-lg transition-all hover:scale-105 shadow-lg inline-block"
             style={{
               backgroundColor: 'white',
-              color: 'var(--primary)',
+              color: 'var(--color-purple)',
+              boxShadow: '0 4px 16px rgba(255, 255, 255, 0.3)',
             }}
           >
-            Download Now
-          </a>
+            訂閱通知
+          </button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="max-w-7xl mx-auto px-5 py-12 border-t" style={{ borderColor: 'var(--border)' }}>
+      <footer className="max-w-7xl mx-auto px-5 py-12">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2">
             <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center text-lg font-bold"
+              className="w-8 h-8 rounded-xl flex items-center justify-center text-lg font-bold"
               style={{
-                background: 'linear-gradient(135deg, #4A90E2 0%, #42E100 100%)',
+                background: 'linear-gradient(90deg, var(--gradient-purple-start) 0%, var(--gradient-blue-end) 100%)',
                 color: 'white',
+                boxShadow: '0 2px 8px var(--shadow)',
               }}
             >
-              P
+              S
             </div>
             <span
               className="text-lg font-semibold"
               style={{ color: 'var(--text-primary)' }}
             >
-              MintBrush
+              slowAI
             </span>
           </div>
           <div className="flex flex-col md:flex-row items-center gap-4">
