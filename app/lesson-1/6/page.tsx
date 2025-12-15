@@ -181,7 +181,7 @@ export default function Lesson1Review() {
           </div>
         </section>
 
-        <LessonNavigation currentPage={6} totalPages={7} />
+        <LessonNavigation currentPage={6} totalPages={6} />
       </div>
     </div>
   );
