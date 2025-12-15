@@ -64,6 +64,11 @@ export default function Lesson1StickerGenerator() {
       return;
     }
 
+    // Open subscription modal first
+    setIsModalOpen(true);
+  };
+
+  const handleGenerateAfterModal = async () => {
     setIsGenerating(true);
     setError(null);
     setGeneratedImageBase64(null);
@@ -106,9 +111,22 @@ export default function Lesson1StickerGenerator() {
     }
   };
 
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    // After modal closes, proceed with generation if conditions are met
+    if (socialEnergyText.trim() && !hasGenerated && !isGenerating) {
+      handleGenerateAfterModal();
+    }
+  };
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--background-primary)' }}>
-      <SubscribeModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <SubscribeModal
+        isOpen={isModalOpen}
+        onClose={handleModalClose}
+        title="🎨 正在準備生成貼圖"
+        description="如果你對類似的 AI 生成內容有興趣，可以在下方留下你的電子郵件，當第二課、第三課開放時，以及 slowAI App 正式上架時，我們會第一時間通知你。"
+      />
 
       {/* Navigation */}
       <nav className="max-w-7xl mx-auto px-5 py-6">
@@ -445,7 +463,7 @@ export default function Lesson1StickerGenerator() {
                 AI 小工人們正在努力生成你的貼圖...
               </p>
               <p className="text-sm mt-2" style={{ color: 'var(--text-tertiary)' }}>
-                這可能需要幾秒鐘時間
+                這可能需要一分鐘的時間
               </p>
             </div>
           )}

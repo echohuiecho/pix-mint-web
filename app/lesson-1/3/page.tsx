@@ -43,52 +43,122 @@ export default function Lesson1Step2Part1() {
   const hardcodedSentimentResponse = (text: string) => {
     const t = (text ?? '').trim();
     if (!t) {
-      return 'Sentiment=neutral, Intensity=low, Confidence=low, KeyEmotion=unsure.';
+      return {
+        sentiment: '中性',
+        intensity: '低',
+        confidence: '低',
+        keyEmotion: '不確定',
+      };
     }
 
     // Exact matches for the built-in examples (fixed responses)
     if (t === examples.office.items[0]) {
-      return 'Sentiment=negative, Intensity=high, Confidence=high, KeyEmotion=exhaustion.';
+      return {
+        sentiment: '負面',
+        intensity: '高',
+        confidence: '高',
+        keyEmotion: '疲憊',
+      };
     }
     if (t === examples.office.items[1]) {
-      return 'Sentiment=negative, Intensity=high, Confidence=medium, KeyEmotion=overload.';
+      return {
+        sentiment: '負面',
+        intensity: '高',
+        confidence: '中',
+        keyEmotion: '過載',
+      };
     }
     if (t === examples.student.items[0]) {
-      return 'Sentiment=negative, Intensity=high, Confidence=high, KeyEmotion=burnout.';
+      return {
+        sentiment: '負面',
+        intensity: '高',
+        confidence: '高',
+        keyEmotion: '倦怠',
+      };
     }
     if (t === examples.student.items[1]) {
-      return 'Sentiment=negative, Intensity=high, Confidence=high, KeyEmotion=demotivation.';
+      return {
+        sentiment: '負面',
+        intensity: '高',
+        confidence: '高',
+        keyEmotion: '失去動力',
+      };
     }
     if (t === examples.general.items[0]) {
-      return 'Sentiment=negative, Intensity=medium, Confidence=medium, KeyEmotion=overload.';
+      return {
+        sentiment: '負面',
+        intensity: '中',
+        confidence: '中',
+        keyEmotion: '過載',
+      };
     }
     if (t === examples.general.items[1]) {
-      return 'Sentiment=negative, Intensity=high, Confidence=medium, KeyEmotion=overwhelm.';
+      return {
+        sentiment: '負面',
+        intensity: '高',
+        confidence: '中',
+        keyEmotion: '難以招架',
+      };
     }
 
     // Simple keyword-based routing to different fixed outputs (still hard-coded)
     const n = t.replace(/[「」"]/g, '').toLowerCase();
 
     if (/(開心|期待|興奮|很棒|舒服|放鬆|滿足)/.test(n)) {
-      return 'Sentiment=positive, Intensity=medium, Confidence=medium, KeyEmotion=contentment.';
+      return {
+        sentiment: '正面',
+        intensity: '中',
+        confidence: '中',
+        keyEmotion: '滿足',
+      };
     }
     if (/(累|疲|用光|歸零|沒電|1%|耗盡|倦|burnout)/.test(n)) {
-      return 'Sentiment=negative, Intensity=medium, Confidence=medium, KeyEmotion=fatigue.';
+      return {
+        sentiment: '負面',
+        intensity: '中',
+        confidence: '中',
+        keyEmotion: '疲勞',
+      };
     }
     if (/(焦慮|緊張|擔心|怕|壓力)/.test(n)) {
-      return 'Sentiment=negative, Intensity=medium, Confidence=medium, KeyEmotion=anxiety.';
+      return {
+        sentiment: '負面',
+        intensity: '中',
+        confidence: '中',
+        keyEmotion: '焦慮',
+      };
     }
     if (/(生氣|火大|煩|惱|怒)/.test(n)) {
-      return 'Sentiment=negative, Intensity=medium, Confidence=medium, KeyEmotion=frustration.';
+      return {
+        sentiment: '負面',
+        intensity: '中',
+        confidence: '中',
+        keyEmotion: '挫折',
+      };
     }
     if (/(無聊|沒差|普通|還好|一般|ok)/.test(n)) {
-      return 'Sentiment=neutral, Intensity=low, Confidence=medium, KeyEmotion=indifferent.';
+      return {
+        sentiment: '中性',
+        intensity: '低',
+        confidence: '中',
+        keyEmotion: '無所謂',
+      };
     }
     if (/(想自己|不想社交|不想social|躲|被窩)/.test(n)) {
-      return 'Sentiment=negative, Intensity=medium, Confidence=low, KeyEmotion=withdrawal.';
+      return {
+        sentiment: '負面',
+        intensity: '中',
+        confidence: '低',
+        keyEmotion: '退縮',
+      };
     }
 
-    return 'Sentiment=neutral, Intensity=low, Confidence=low, KeyEmotion=unclear.';
+    return {
+      sentiment: '中性',
+      intensity: '低',
+      confidence: '低',
+      keyEmotion: '不明確',
+    };
   };
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--background-primary)' }}>
@@ -330,24 +400,45 @@ export default function Lesson1Step2Part1() {
             </div>
 
             {/* Chat bubbles */}
-            <div className="space-y-4">
-              <div className="flex justify-start">
-                <div
-                  className="max-w-[90%] rounded-3xl px-5 py-4"
-                  style={{
-                    backgroundColor: 'var(--background-primary)',
-                    color: 'var(--text-primary)',
-                    boxShadow: '0 2px 8px var(--shadow-md)',
-                  }}
-                >
-                  <div className="text-sm opacity-70 mb-1">ChatGPT (模擬回覆)</div>
-                  <div className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                    {hasSent
-                      ? hardcodedSentimentResponse(userSentence)
-                      : '（按 Send 後會顯示一個單句情緒分析回覆）'}
+            <div className="space-y-3">
+              {hasSent ? (
+                <>
+                  <div className="text-xs font-semibold mb-2 opacity-70" style={{ color: 'var(--text-secondary)' }}>
+                    ChatGPT (模擬回覆)
                   </div>
+                  <div className="flex flex-wrap gap-2">
+                    {(() => {
+                      const response = hardcodedSentimentResponse(userSentence);
+                      return [
+                        { label: '情緒', value: response.sentiment, color: 'var(--color-purple)' },
+                        { label: '強度', value: response.intensity, color: 'var(--color-orange)' },
+                        { label: '信心度', value: response.confidence, color: 'var(--color-blue)' },
+                        { label: '關鍵情緒', value: response.keyEmotion, color: 'var(--color-green)' },
+                      ].map((item, idx) => (
+                        <div
+                          key={idx}
+                          className="rounded-2xl px-4 py-2.5 inline-flex items-center gap-2"
+                          style={{
+                            backgroundColor: 'var(--background-primary)',
+                            boxShadow: '0 2px 8px var(--shadow-md)',
+                          }}
+                        >
+                          <span className="text-xs font-semibold" style={{ color: 'var(--text-secondary)' }}>
+                            {item.label}:
+                          </span>
+                          <span className="text-sm font-bold" style={{ color: item.color }}>
+                            {item.value}
+                          </span>
+                        </div>
+                      ));
+                    })()}
+                  </div>
+                </>
+              ) : (
+                <div className="text-sm opacity-60" style={{ color: 'var(--text-secondary)' }}>
+                  （按 Send 後會顯示情緒分析回覆）
                 </div>
-              </div>
+              )}
             </div>
           </div>
 

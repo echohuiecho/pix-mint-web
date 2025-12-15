@@ -5,9 +5,16 @@ import { useState } from 'react';
 interface SubscribeModalProps {
   isOpen: boolean;
   onClose: () => void;
+  title?: string;
+  description?: string;
 }
 
-export default function SubscribeModal({ isOpen, onClose }: SubscribeModalProps) {
+export default function SubscribeModal({
+  isOpen,
+  onClose,
+  title = '訂閱通知',
+  description = '當第二課、第三課開放時，以及 slowAI App 正式上架時，我們會第一時間通知你。'
+}: SubscribeModalProps) {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
@@ -108,13 +115,13 @@ export default function SubscribeModal({ isOpen, onClose }: SubscribeModalProps)
           className="text-3xl font-bold mb-2"
           style={{ color: 'var(--text-primary)' }}
         >
-          訂閱通知
+          {title}
         </h2>
         <p
           className="text-base mb-6"
           style={{ color: 'var(--text-secondary)' }}
         >
-          當第二課、第三課開放時，以及 slowAI App 正式上架時，我們會第一時間通知你。
+          {description}
         </p>
 
         <form onSubmit={handleSubmit}>
