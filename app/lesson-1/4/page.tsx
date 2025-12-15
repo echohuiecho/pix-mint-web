@@ -451,7 +451,7 @@ export default function Lesson1StickerGenerator() {
           )}
         </section>
 
-        <LessonNavigation currentPage={4} totalPages={7} />
+        <LessonNavigation currentPage={4} totalPages={6} />
       </div>
     </div>
   );

@@ -119,7 +119,7 @@ export default function Lesson1Step1() {
           </div>
         </section>
 
-        <LessonNavigation currentPage={2} totalPages={7} />
+        <LessonNavigation currentPage={2} totalPages={6} />
       </div>
     </div>
   );

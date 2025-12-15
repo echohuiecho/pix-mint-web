@@ -422,7 +422,7 @@ export default function Lesson1Step2Part1() {
           </div>
         </section>
 
-        <LessonNavigation currentPage={3} totalPages={7} />
+        <LessonNavigation currentPage={3} totalPages={6} />
       </div>
     </div>
   );
