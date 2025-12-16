@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "30c0dcef-b215-4d42-bc7f-1e50875070e6"
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "com.e7910.pixmintweb",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    }
+  }
+}
