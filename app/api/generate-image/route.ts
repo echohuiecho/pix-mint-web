@@ -63,9 +63,21 @@ async function logToGoogleSheet(
     const serviceAccountEmail = process.env.GOOGLE_SHEETS_SERVICE_ACCOUNT_EMAIL;
     const rawPrivateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY;
 
+    // Debug logging
+    console.log('🔍 Google Sheets Logging Debug:');
+    console.log('  GOOGLE_SHEETS_LOG_SPREADSHEET_ID:', logSpreadsheetId ? '✅ Set' : '❌ Missing');
+    console.log('  GOOGLE_SHEETS_LOG_SHEET_NAME:', logSheetName);
+    console.log('  GOOGLE_SHEETS_SERVICE_ACCOUNT_EMAIL:', serviceAccountEmail ? '✅ Set' : '❌ Missing');
+    console.log('  GOOGLE_SHEETS_PRIVATE_KEY:', rawPrivateKey ? '✅ Set' : '❌ Missing');
+
     // If logging is not configured, skip silently
     if (!logSpreadsheetId || !serviceAccountEmail || !rawPrivateKey) {
-      console.log('Google Sheets logging not configured, skipping log entry');
+      console.log('⚠️ Google Sheets logging not configured, skipping log entry');
+      console.log('  Missing:', {
+        logSpreadsheetId: !logSpreadsheetId,
+        serviceAccountEmail: !serviceAccountEmail,
+        rawPrivateKey: !rawPrivateKey,
+      });
       return;
     }
 
@@ -103,6 +115,9 @@ async function logToGoogleSheet(
 
     // Append to the sheet
     let appendRange = `${actualSheetName}!A:E`;
+    console.log(`📝 Attempting to append to sheet: ${logSpreadsheetId}, range: ${appendRange}`);
+    console.log(`📊 Row data:`, rowData);
+
     try {
       await sheets.spreadsheets.values.append({
         spreadsheetId: logSpreadsheetId,
@@ -112,26 +127,48 @@ async function logToGoogleSheet(
           values: [rowData],
         },
       });
-      console.log('Successfully logged to Google Sheet');
+      console.log('✅ Successfully logged to Google Sheet');
     } catch (appendError: any) {
+      console.error('❌ Error appending to sheet:', appendError.message || appendError);
+      console.error('   Error details:', JSON.stringify(appendError, null, 2));
+
       // If range error, try without sheet name
       if (appendError.message?.includes('Unable to parse range')) {
+        console.log('🔄 Retrying without sheet name...');
         appendRange = 'A:E';
-        await sheets.spreadsheets.values.append({
-          spreadsheetId: logSpreadsheetId,
-          range: appendRange,
-          valueInputOption: 'USER_ENTERED',
-          requestBody: {
-            values: [rowData],
-          },
-        });
+        try {
+          await sheets.spreadsheets.values.append({
+            spreadsheetId: logSpreadsheetId,
+            range: appendRange,
+            valueInputOption: 'USER_ENTERED',
+            requestBody: {
+              values: [rowData],
+            },
+          });
+          console.log('✅ Successfully logged to Google Sheet (retry)');
+        } catch (retryError: any) {
+          console.error('❌ Retry also failed:', retryError.message || retryError);
+          throw retryError;
+        }
       } else {
         throw appendError;
       }
     }
-  } catch (error) {
+  } catch (error: any) {
     // Log error but don't throw - we don't want logging failures to affect the main flow
-    console.error('Error logging to Google Sheet:', error);
+    console.error('❌ Error logging to Google Sheet:', error);
+    console.error('   Error message:', error.message);
+    console.error('   Error code:', error.code);
+    console.error('   Error response:', error.response?.data);
+
+    // Check for common errors
+    if (error.code === 403) {
+      console.error('⚠️ Permission denied. Make sure the service account email has edit access to the Google Sheet.');
+      console.error('   Service account email:', process.env.GOOGLE_SHEETS_SERVICE_ACCOUNT_EMAIL);
+    } else if (error.code === 404) {
+      console.error('⚠️ Spreadsheet not found. Check if the spreadsheet ID is correct.');
+      console.error('   Spreadsheet ID:', process.env.GOOGLE_SHEETS_LOG_SPREADSHEET_ID);
+    }
   }
 }
 
