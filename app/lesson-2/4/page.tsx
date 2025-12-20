@@ -1,9 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import LessonNavigation from '../../lesson-1/components/LessonNavigation';
+import LessonNavigation from '../../components/LessonNavigation';
 
-export default function Lesson1Step2Part3() {
+export default function Lesson2Step5() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--background-primary)' }}>
       {/* Navigation */}
@@ -48,88 +48,116 @@ export default function Lesson1Step2Part3() {
             className="text-4xl md:text-5xl font-bold mb-6"
             style={{ color: 'var(--text-primary)' }}
           >
-            🧩 關鍵詞拆解：把話變成「AI 聽得懂」的描述
+            Step 5｜建立 Git repo：把第一次可跑版本存起來
           </h1>
 
           <div
-            className="p-6 rounded-3xl mb-6 text-xl"
+            className="p-6 rounded-3xl mb-6"
             style={{
               backgroundColor: 'var(--background-secondary)',
               boxShadow: '0 4px 16px var(--shadow-md)',
             }}
           >
+            <h2
+              className="text-2xl font-bold mb-4"
+              style={{ color: 'var(--text-primary)' }}
+            >
+              目標
+            </h2>
             <p
-              className="text-xl leading-relaxed mb-4"
+              className="text-lg leading-relaxed"
               style={{ color: 'var(--text-secondary)' }}
             >
-              對模型來說，你那一句完整的句子，並不會被當成「一整塊」來理解。
-            </p>
-            <p
-              className="text-xl leading-relaxed mb-4"
-              style={{ color: 'var(--text-secondary)' }}
-            >
-              它會先拆成一個個較小的單位（可以想像成「字粒」），例如：
+              把「可跑的第一版」鎖定成一個起點。你之後要改、要加 feature、要回退，都會更安心。
             </p>
           </div>
 
           <div
-            className="p-6 rounded-3xl mb-4 text-xl"
+            className="p-6 rounded-3xl mb-6"
             style={{
               backgroundColor: 'var(--background-secondary)',
               boxShadow: '0 4px 16px var(--shadow-md)',
             }}
           >
-            <div className="flex flex-wrap gap-2 mb-4 text-xl">
-              {['今日', 'social', 'energy', '用晒', '黏在', '沙發', '不動'].map((word) => (
-                <span
-                  key={word}
-                  className="px-3 py-1 rounded-xl text-sm font-medium"
-                  style={{
-                    backgroundColor: 'var(--background-darker)',
-                    color: 'var(--text-primary)',
-                    boxShadow: '0 2px 4px var(--shadow)',
-                  }}
-                >
-                  {word}
-                </span>
-              ))}
-            </div>
-            <p
-              className="text-xl leading-relaxed mb-4"
-              style={{ color: 'var(--text-secondary)' }}
+            <h2
+              className="text-2xl font-bold mb-4"
+              style={{ color: 'var(--text-primary)' }}
             >
-              在模型的內部世界裡：
-            </p>
-            <ul className="list-disc list-inside mb-4 space-y-2" style={{ color: 'var(--text-secondary)' }}>
-              <li>「用晒」、「攰」、「不動」會比較靠近「低能量」、「疲憊」這一群字；</li>
-              <li>「沙發」、「床」、「被窩」會比較靠近「休息」、「放鬆」這一群字。</li>
-            </ul>
-            <p
-              className="text-xl leading-relaxed mb-4"
-              style={{ color: 'var(--text-secondary)' }}
-            >
-              當模型嘗試幫你生成貼圖時，其實是在內心裡拼湊出一段大概的畫面描述，例如：
-            </p>
-            <div
-              className="p-4 rounded-2xl my-4 border-l-4"
+              指令
+            </h2>
+            <pre
+              className="p-4 rounded-2xl overflow-x-auto mb-4"
               style={{
-                backgroundColor: 'var(--background-light-blue)',
-                borderColor: 'var(--color-purple)',
-                boxShadow: '0 2px 8px var(--shadow)',
+                backgroundColor: 'var(--background-primary)',
+                color: 'var(--text-primary)',
+                boxShadow: '0 2px 8px var(--shadow-md)',
               }}
             >
-              <p
-                className="text-base italic leading-relaxed"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                💭 「一個很累、energy 用盡的人，軟軟地黏在沙發上，表情無力，整體感覺是一個低能量但安全的空間。」
+              <code>{`git init
+git add .
+git commit -m "chore: init nextjs project and migrate canvas html"`}</code>
+            </pre>
+          </div>
+
+          <div
+            className="p-6 rounded-3xl mb-6"
+            style={{
+              backgroundColor: 'var(--background-light-blue)',
+              boxShadow: '0 4px 16px var(--shadow-md)',
+            }}
+          >
+            <h2
+              className="text-2xl font-bold mb-4"
+              style={{ color: 'var(--text-primary)' }}
+            >
+              （可選）推到 GitHub
+            </h2>
+            <ol className="list-decimal list-inside space-y-3" style={{ color: 'var(--text-secondary)' }}>
+              <li className="text-lg">在 GitHub 新建 repo（不要勾選 README／gitignore，避免衝突）</li>
+              <li className="text-lg">按 GitHub 指示加 remote：</li>
+            </ol>
+            <pre
+              className="p-4 rounded-2xl overflow-x-auto mt-4"
+              style={{
+                backgroundColor: 'var(--background-primary)',
+                color: 'var(--text-primary)',
+                boxShadow: '0 2px 8px var(--shadow-md)',
+              }}
+            >
+              <code>{`git remote add origin <your_repo_url>
+git branch -M main
+git push -u origin main`}</code>
+            </pre>
+          </div>
+
+          {/* Image Placeholders */}
+          <div className="space-y-6 mb-8">
+            <div
+              className="w-full h-64 md:h-80 rounded-3xl flex items-center justify-center"
+              style={{
+                backgroundColor: 'var(--background-light-purple)',
+                boxShadow: '0 4px 16px var(--shadow-md)',
+              }}
+            >
+              <p style={{ color: 'var(--text-secondary)' }}>
+                [Image: 截圖 / alt="Terminal 顯示 git commit 成功訊息"]
               </p>
             </div>
-
+            <div
+              className="w-full h-64 md:h-80 rounded-3xl flex items-center justify-center"
+              style={{
+                backgroundColor: 'var(--background-light-green)',
+                boxShadow: '0 4px 16px var(--shadow-md)',
+              }}
+            >
+              <p style={{ color: 'var(--text-secondary)' }}>
+                [Image: 截圖 / alt="GitHub repo 首次 push 完成，看到檔案列表"]
+              </p>
+            </div>
           </div>
         </section>
 
-        <LessonNavigation currentPage={4} totalPages={7} />
+        <LessonNavigation currentPage={4} totalPages={5} lessonNumber={2} />
       </div>
     </div>
   );

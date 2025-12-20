@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import LessonNavigation from '../components/LessonNavigation';
+import LessonNavigation from '../../components/LessonNavigation';
 
 export default function Lesson1Step3() {
   return (
@@ -179,7 +179,7 @@ export default function Lesson1Step3() {
           </div>
         </section>
 
-        <LessonNavigation currentPage={5} totalPages={6} />
+        <LessonNavigation currentPage={5} totalPages={6} lessonNumber={1} />
       </div>
     </div>
   );

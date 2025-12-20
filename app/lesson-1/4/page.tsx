@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import SubscribeModal from '../../components/SubscribeModal';
-import LessonNavigation from '../components/LessonNavigation';
+import LessonNavigation from '../../components/LessonNavigation';
 
 export default function Lesson1StickerGenerator() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -469,7 +469,7 @@ export default function Lesson1StickerGenerator() {
           )}
         </section>
 
-        <LessonNavigation currentPage={4} totalPages={6} />
+        <LessonNavigation currentPage={4} totalPages={6} lessonNumber={1} />
       </div>
     </div>
   );

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import LessonNavigation from '../components/LessonNavigation';
+import LessonNavigation from '../../components/LessonNavigation';
 
 export default function Lesson1Step2Part1() {
   const [selectedExample, setSelectedExample] = useState<'office' | 'student' | 'general'>('office');
@@ -513,7 +513,7 @@ export default function Lesson1Step2Part1() {
           </div>
         </section>
 
-        <LessonNavigation currentPage={3} totalPages={6} />
+        <LessonNavigation currentPage={3} totalPages={6} lessonNumber={1} />
       </div>
     </div>
   );

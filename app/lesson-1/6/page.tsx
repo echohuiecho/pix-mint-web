@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import SubscribeModal from '../../components/SubscribeModal';
-import LessonNavigation from '../components/LessonNavigation';
+import LessonNavigation from '../../components/LessonNavigation';
 
 export default function Lesson1Review() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -181,7 +181,7 @@ export default function Lesson1Review() {
           </div>
         </section>
 
-        <LessonNavigation currentPage={6} totalPages={6} />
+        <LessonNavigation currentPage={6} totalPages={6} lessonNumber={1} />
       </div>
     </div>
   );
