@@ -81,10 +81,19 @@ export default function Lesson2Step3And4() {
               </p>
             </div>
 
+            {/* Part 1: Save HTML */}
+          <div className="mb-12">
+            <h2
+              className="text-3xl font-bold mb-6"
+              style={{ color: 'var(--text-primary)' }}
+            >
+              Part 1：把 Canvas 的 HTML 複製
+            </h2>
+
             <div
               className="p-6 rounded-3xl mb-6"
               style={{
-                backgroundColor: 'var(--background-secondary)',
+                backgroundColor: 'var(--background-light-blue)',
                 boxShadow: '0 4px 16px var(--shadow-md)',
               }}
             >
@@ -92,17 +101,31 @@ export default function Lesson2Step3And4() {
                 className="text-2xl font-bold mb-4"
                 style={{ color: 'var(--text-primary)' }}
               >
-                你要打開的檔案（Next.js）
+                小提醒
               </h3>
               <p
-                className="text-lg leading-relaxed mb-2"
+                className="text-lg leading-relaxed"
                 style={{ color: 'var(--text-secondary)' }}
               >
-                （App Router 情況）
+                暫時不要急著改內容。我們先保留原樣，讓 Cursor 幫你做「搬運＋整理」。
               </p>
-              <ul className="list-disc list-inside space-y-2" style={{ color: 'var(--text-secondary)' }}>
-                <li className="text-lg"><code className="px-2 py-1 rounded" style={{ backgroundColor: 'var(--background-primary)' }}>app/page.tsx</code>（或 <code className="px-2 py-1 rounded" style={{ backgroundColor: 'var(--background-primary)' }}>src/app/page.tsx</code>）</li>
-              </ul>
+            </div>
+
+            {/* Image Placeholder */}
+            <div
+              className="p-8 rounded-3xl mb-8 flex justify-center"
+              style={{
+                backgroundColor: 'var(--background-secondary)',
+                boxShadow: '0 4px 16px var(--shadow-md)',
+              }}
+            >
+                <img
+                  src="https://slowai-learn.sgp1.cdn.digitaloceanspaces.com/lesson-2/%E6%96%87%E5%AD%97%E8%BD%89%E8%89%B2%E5%99%A8-HTML-prototype.png"
+                  alt="下載或複製 Canvas 產出的 HTML 原始碼（包含 style 與 script）"
+                  className="max-h-full max-w-full rounded-xl border"
+                  style={{ boxShadow: '0 2px 8px rgba(80,80,100,.07)' }}
+                />
+              </div>
             </div>
 
             <div
@@ -122,8 +145,8 @@ export default function Lesson2Step3And4() {
                 <li className="text-lg">打開 Cursor</li>
                 <li className="text-lg">打開你的 Next.js 專案資料夾 <code className="px-2 py-1 rounded" style={{ backgroundColor: 'var(--background-primary)' }}>canvas-to-next</code></li>
                 <li className="text-lg">去 <strong>Agent</strong> 分頁</li>
-                <li className="text-lg"><strong>Attach</strong> 你的 <code className="px-2 py-1 rounded" style={{ backgroundColor: 'var(--background-primary)' }}>canvas.html</code>（或直接貼上內容）</li>
-                <li className="text-lg">請 Agent 幫你把 HTML 移植到 <code className="px-2 py-1 rounded" style={{ backgroundColor: 'var(--background-primary)' }}>app/page.tsx</code></li>
+                <li className="text-lg">請 Agent 幫你把 HTML 移植到 <code className="px-2 py-1 rounded" style={{ backgroundColor: 'var(--background-primary)' }}>app/page.tsx</code>
+                </li>
               </ol>
             </div>
 
@@ -149,16 +172,11 @@ export default function Lesson2Step3And4() {
                   whiteSpace: 'pre-wrap',
                 }}
               >
-                <code>{`我有一份從 Gemini Canvas 匯出的完整 HTML（見附件 canvas.html）。
-請把它移植到 Next.js App Router 的首頁：app/page.tsx。
-要求：
+                <code>{`將以下 HTML code, 直接轉換成landing page @app/page.tsx 的內容和功能。
 
-1. 保留原本畫面與互動行為
-2. 將 HTML body 內容轉成 React JSX
-3. 將 <style> 整理到合適位置（可先用 <style jsx global> 或 app/globals.css）
-4. 將 <script> 的邏輯改成 React/Next.js 可用方式（例如 useEffect 綁事件、或改成 component state）
-5. 若涉及 document.getElementById，請盡量改成 React ref / state（但第一版可先讓它跑得起來）
-6. 完成後告訴我你改了哪些檔案，以及我如何測試`}</code>
+                <!-- HTML -->
+                貼上你的 HTML 程式碼 ...
+                `}</code>
               </pre>
             </div>
 

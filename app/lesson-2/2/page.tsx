@@ -48,7 +48,7 @@ export default function Lesson2Step1And2() {
             className="text-4xl md:text-5xl font-bold mb-6"
             style={{ color: 'var(--text-primary)' }}
           >
-            Step 1-2｜把 Canvas 的 HTML + 建立 Next.js 專案
+            建立 Next.js 專案
           </h1>
 
           <div
@@ -68,7 +68,7 @@ export default function Lesson2Step1And2() {
                 className="text-lg leading-relaxed mb-4"
                 style={{ color: 'var(--text-secondary)' }}
               >
-                先把 Canvas 產物變成 Next.js 專案的入口頁面
+                先把 Canvas Next.js 專案的入口頁面跑起來
               </p>
               <p
                 className="text-lg leading-relaxed"
@@ -78,52 +78,7 @@ export default function Lesson2Step1And2() {
               </p>
             </div>
 
-          {/* Part 1: Save HTML */}
-          <div className="mb-12">
-            <h2
-              className="text-3xl font-bold mb-6"
-              style={{ color: 'var(--text-primary)' }}
-            >
-              Part 1：把 Canvas 的 HTML 複製
-            </h2>
 
-            <div
-              className="p-6 rounded-3xl mb-6"
-              style={{
-                backgroundColor: 'var(--background-light-blue)',
-                boxShadow: '0 4px 16px var(--shadow-md)',
-              }}
-            >
-              <h3
-                className="text-2xl font-bold mb-4"
-                style={{ color: 'var(--text-primary)' }}
-              >
-                小提醒
-              </h3>
-              <p
-                className="text-lg leading-relaxed"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                暫時不要急著改內容。我們先保留原樣，讓 Cursor 幫你做「搬運＋整理」。
-              </p>
-            </div>
-
-            {/* Image Placeholder */}
-            <div
-              className="p-8 rounded-3xl mb-8 flex justify-center"
-              style={{
-                backgroundColor: 'var(--background-secondary)',
-                boxShadow: '0 4px 16px var(--shadow-md)',
-              }}
-            >
-              <img
-                src="https://slowai-learn.sgp1.cdn.digitaloceanspaces.com/lesson-2/%E6%96%87%E5%AD%97%E8%BD%89%E8%89%B2%E5%99%A8-HTML-prototype.png"
-                alt="下載或複製 Canvas 產出的 HTML 原始碼（包含 style 與 script）"
-                className="max-h-full max-w-full rounded-xl border"
-                style={{ boxShadow: '0 2px 8px rgba(80,80,100,.07)' }}
-              />
-            </div>
-          </div>
 
 
           {/* Part 2: Create Next.js Project */}
@@ -318,6 +273,22 @@ export default function Lesson2Step1And2() {
               </pre>
             </div>
 
+            {/* Image Placeholder */}
+            <div
+              className="p-8 rounded-3xl mb-8 flex justify-center"
+              style={{
+                backgroundColor: 'var(--background-secondary)',
+                boxShadow: '0 4px 16px var(--shadow-md)',
+              }}
+            >
+              <img
+                src="https://slowai-learn.sgp1.cdn.digitaloceanspaces.com/lesson-2/create-next-app-terminal.gif"
+                alt="Terminal 顯示 create-next-app"
+                className="max-h-full max-w-full rounded-xl border"
+                style={{ boxShadow: '0 2px 8px rgba(80,80,100,.07)' }}
+              />
+            </div>
+
             <div
               className="p-6 rounded-3xl mb-6"
               style={{
@@ -385,9 +356,12 @@ export default function Lesson2Step1And2() {
                   boxShadow: '0 4px 16px var(--shadow-md)',
                 }}
               >
-                <p style={{ color: 'var(--text-secondary)' }}>
-                  [Image: 截圖 / alt="create-next-app 建立完成後的資料夾結構"]
-                </p>
+                <img
+                  src="https://slowai-learn.sgp1.cdn.digitaloceanspaces.com/lesson-2/next-app-default-landing.jpg"
+                  alt="create-next-app 建立完成後的資料夾結構"
+                  className="max-h-full max-w-full rounded-xl border"
+                  style={{ boxShadow: '0 2px 8px rgba(80,80,100,.07)' }}
+                />
               </div>
               <div
                 className="w-full h-64 md:h-80 rounded-3xl flex items-center justify-center"
