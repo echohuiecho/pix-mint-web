@@ -6,13 +6,14 @@ interface LessonNavigationProps {
   currentPage: number;
   totalPages: number;
   lessonNumber: number;
+  customPath?: string;
 }
 
-export default function LessonNavigation({ currentPage, totalPages, lessonNumber }: LessonNavigationProps) {
+export default function LessonNavigation({ currentPage, totalPages, lessonNumber, customPath }: LessonNavigationProps) {
   const prevPage = currentPage > 1 ? currentPage - 1 : null;
   const nextPage = currentPage < totalPages ? currentPage + 1 : null;
   const progress = (currentPage / totalPages) * 100;
-  const lessonPath = `/lesson-${lessonNumber}`;
+  const lessonPath = customPath || `/lesson-${lessonNumber}`;
 
   return (
     <div className="mt-12 pt-8 border-t" style={{ borderColor: 'var(--border)' }}>

@@ -1,0 +1,126 @@
+'use client';
+
+import { useState } from 'react';
+import Link from 'next/link';
+import LessonNavigation from '../../components/LessonNavigation';
+
+export default function TeachElderlyImgGenPage3() {
+  const [copied, setCopied] = useState(false);
+
+  const prompt = `新年主題日系插畫風格呈現一家人開心合照的溫馨氛圍，家族成員穿著紅金色系的傳統賀年衣服
+
+背景簡潔有燈籠和春聯點綴，整體散發著溫暖柔和的光線，乾淨的背景視覺效果，
+
+家族成員面帶笑容，身穿不同款式的紅金色系服裝，燈籠和春聯以傳統色彩和設計為主。`;
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(prompt);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
+
+  return (
+    <div className="min-h-screen" style={{ backgroundColor: 'var(--background-primary)' }}>
+      {/* Navigation */}
+      <nav className="max-w-7xl mx-auto px-5 py-6">
+        <div className="flex justify-between items-center">
+          <Link href="/" className="flex items-center gap-2">
+            <div
+              className="w-10 h-10 rounded-2xl flex items-center justify-center text-xl font-bold"
+              style={{
+                background: 'linear-gradient(90deg, var(--gradient-purple-start) 0%, var(--gradient-blue-end) 100%)',
+                color: 'white',
+                boxShadow: '0 2px 8px var(--shadow)',
+              }}
+            >
+              S
+            </div>
+            <span
+              className="text-xl font-bold"
+              style={{ color: 'var(--text-primary)' }}
+            >
+              slowAI
+            </span>
+          </Link>
+          <Link
+            href="/"
+            className="px-6 py-2.5 rounded-2xl font-semibold transition-all hover:scale-105"
+            style={{
+              background: 'linear-gradient(90deg, var(--gradient-purple-start) 0%, var(--gradient-blue-end) 100%)',
+              color: 'white',
+              boxShadow: '0 4px 12px rgba(140, 80, 200, 0.25)',
+            }}
+          >
+            返回首頁
+          </Link>
+        </div>
+      </nav>
+
+      {/* Content */}
+      <div className="max-w-4xl mx-auto px-5 py-12">
+        <section className="mb-12">
+          <h1
+            className="text-4xl md:text-5xl font-bold mb-6"
+            style={{ color: 'var(--text-primary)' }}
+          >
+            生成圖片體驗 #3
+          </h1>
+
+          <div
+            className="p-6 rounded-3xl mb-6"
+            style={{
+              backgroundColor: 'var(--background-secondary)',
+              boxShadow: '0 4px 16px var(--shadow-md)',
+            }}
+          >
+            <h2
+              className="text-2xl font-bold mb-4"
+              style={{ color: 'var(--text-primary)' }}
+            >
+              新年主題-日系插畫風格
+            </h2>
+            <div
+              className="p-4 rounded-2xl mb-4 font-mono text-lg whitespace-pre-wrap"
+              style={{
+                backgroundColor: 'var(--background-darker)',
+                color: 'var(--text-secondary)',
+                border: '1px solid var(--border)',
+              }}
+            >
+              {prompt}
+            </div>
+            <button
+              onClick={handleCopy}
+              className="w-full px-6 py-3 rounded-2xl font-semibold transition-all hover:scale-105 flex items-center justify-center gap-2"
+              style={{
+                background: copied
+                  ? 'linear-gradient(90deg, #10b981 0%, #059669 100%)'
+                  : 'linear-gradient(90deg, var(--gradient-purple-start) 0%, var(--gradient-blue-end) 100%)',
+                color: 'white',
+                boxShadow: '0 4px 12px rgba(140, 80, 200, 0.25)',
+              }}
+            >
+              {copied ? (
+                <>
+                  <span>✓</span>
+                  <span>已複製！</span>
+                </>
+              ) : (
+                <>
+                  <span>📋</span>
+                  <span>複製提示詞</span>
+                </>
+              )}
+            </button>
+          </div>
+        </section>
+
+        <LessonNavigation currentPage={3} totalPages={4} lessonNumber={0} customPath="/teach-elderly-img-gen" />
+      </div>
+    </div>
+  );
+}

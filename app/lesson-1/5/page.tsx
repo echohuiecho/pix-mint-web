@@ -1,11 +1,17 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
+import SubscribeModal from '../../components/SubscribeModal';
 import LessonNavigation from '../../components/LessonNavigation';
 
-export default function Lesson1Step3() {
+export default function Lesson1Review() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--background-primary)' }}>
+      <SubscribeModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
       {/* Navigation */}
       <nav className="max-w-7xl mx-auto px-5 py-6">
         <div className="flex justify-between items-center">
@@ -48,138 +54,134 @@ export default function Lesson1Step3() {
             className="text-4xl md:text-5xl font-bold mb-6"
             style={{ color: 'var(--text-primary)' }}
           >
-            🤖 從文字到貼圖：幾個 AI「小工人」的合作
+            🎉 回顧：你在這一課，其實已經做了什麼？
           </h1>
 
+          {/* Image Placeholder - Generate with prompt: "A celebratory illustration showing someone completing a learning journey, with checkmarks, stars, and a sense of achievement. Warm, encouraging colors, playful design." */}
           <div
-            className="p-6  rounded-3xl mb-6 text-xl"
+            className="w-full h-64 md:h-80 rounded-3xl mb-8 flex items-center justify-center"
+            style={{
+              backgroundColor: 'var(--background-light-yellow)',
+              boxShadow: '0 4px 16px var(--shadow-md)',
+            }}
+          >
+            <img
+              src="https://slowai-learn.sgp1.cdn.digitaloceanspaces.com/lesson-1/lesson-1-done.jpg"
+              alt="A celebratory illustration showing someone completing a learning journey, with checkmarks, stars, and a sense of achievement. Warm, encouraging colors, playful design."
+              className="rounded-2xl h-full max-h-72 object-contain"
+            />
+          </div>
+
+          <div
+            className="p-6 rounded-3xl mb-6"
             style={{
               backgroundColor: 'var(--background-secondary)',
               boxShadow: '0 4px 16px var(--shadow-md)',
             }}
           >
             <p
-              className="text-xl leading-relaxed mb-4"
+              className="text-lg leading-relaxed mb-6"
               style={{ color: 'var(--text-secondary)' }}
             >
-              一張看似簡單的 Social Energy 貼圖，背後其實經過了不同能力的合作。
+              ✨ 在這一課，你已經：
             </p>
+            <ul className="list-none space-y-3 mb-6">
+              <li className="flex items-start gap-3">
+                <span className="text-2xl">✅</span>
+                <span style={{ color: 'var(--text-secondary)' }}>寫出一句真正屬於自己的 Social Energy 描述</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-2xl">✅</span>
+                <span style={{ color: 'var(--text-secondary)' }}>用這一句話，讓模型嘗試捕捉你的情緒與角色，生成屬於自己的第一張 Social Energy 貼圖</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-2xl">✅</span>
+                <span style={{ color: 'var(--text-secondary)' }}>在一個模型裡面，
+                預先學過情緒分析、實體分類、問答、圖像生成等能力。然後再交給圖像模型，一齊完成任務。</span>
+              </li>
+            </ul>
             <p
-              className="text-xl leading-relaxed mb-6"
+              className="text-base leading-relaxed mt-4"
               style={{ color: 'var(--text-secondary)' }}
             >
-              你可以把它想像成幾位「AI 小工人」一起幫忙：
+              即使你還未能用專有名詞解釋整個流程，你已經多了一個很重要的感覺：
             </p>
+            <div
+              className="p-4 rounded-2xl mt-4 border-l-4"
+              style={{
+                backgroundColor: 'var(--background-light-purple)',
+                borderColor: 'var(--color-purple)',
+                boxShadow: '0 2px 8px var(--shadow)',
+              }}
+            >
+              <p
+                className="text-base font-semibold"
+                style={{ color: 'var(--color-purple)' }}
+              >
+                📌 AI 不會真正體會你的social energy，
+                但會盡量由你的用字，拼湊出大概：
+                「某個人，在某個場景，表達某種心情」的畫面。
+              </p>
+            </div>
           </div>
 
-          {/* Image Placeholder - Generate with prompt: "Three friendly, playful AI worker characters collaborating together, each with a different role (emotion reader, scene analyzer, image designer). Soft, rounded, 3D felt-like style with googly eyes, working together harmoniously." */}
+          <h2
+            className="text-3xl font-bold mb-6"
+            style={{ color: 'var(--text-primary)' }}
+          >
+            🚀 下一步：我們會走到哪裡？
+          </h2>
           <div
-            className="w-full h-64 md:h-80 rounded-3xl mb-8 flex items-center justify-center"
+            className="p-6 rounded-3xl mb-6"
             style={{
-              backgroundColor: 'var(--background-light-green)',
+              backgroundColor: 'var(--background-secondary)',
               boxShadow: '0 4px 16px var(--shadow-md)',
             }}
           >
-            <img
-              src="https://slowai-learn.sgp1.cdn.digitaloceanspaces.com/lesson-1/lesson-1-3-AI.jpg"
-              alt="Three friendly, playful AI worker characters collaborating together, each with a different role (emotion reader, scene analyzer, image designer). Soft, rounded, 3D felt-like style with googly eyes, working together harmoniously."
-              className="rounded-2xl h-full max-h-72 object-contain"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <div
-              className="p-6 rounded-3xl"
-              style={{
-                backgroundColor: 'var(--background-secondary)',
-                boxShadow: '0 4px 16px var(--shadow-md)',
-              }}
+            <p
+              className="text-base leading-relaxed mb-4"
+              style={{ color: 'var(--text-secondary)' }}
             >
-              <div className="text-4xl mb-3">😊</div>
-              <h3
-                className="text-xl font-bold mb-3"
-                style={{ color: 'var(--color-purple)' }}
-              >
-                情緒小工人
-              </h3>
-              <p
-                className="text-xl leading-relaxed mb-3"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                負責讀你句子裡的情緒線索：
-              </p>
-              <ul className="list-disc list-inside space-y-1 text-xl" style={{ color: 'var(--text-secondary)' }}>
-                <li>這是一種興奮？</li>
-                <li>還是「用光 energy」的疲累？</li>
-              </ul>
-            </div>
-
-            <div
-              className="p-6 rounded-3xl"
-              style={{
-                backgroundColor: 'var(--background-secondary)',
-                boxShadow: '0 4px 16px var(--shadow-md)',
-              }}
-            >
-              <div className="text-4xl mb-3">👤</div>
-              <h3
-                className="text-xl font-bold mb-3"
-                style={{ color: 'var(--color-purple)' }}
-              >
-                角色與場景小工人
-              </h3>
-              <p
-                className="text-xl leading-relaxed mb-3"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                留意你提到的身份與場景：
-              </p>
-              <ul className="list-disc list-inside space-y-1 text-xl" style={{ color: 'var(--text-secondary)' }}>
-                <li>上班、讀書、退休、照顧者…</li>
-                <li>在辦公室、課室、家裡、地鐵…</li>
-              </ul>
-            </div>
-
-            <div
-              className="p-6 rounded-3xl"
-              style={{
-                backgroundColor: 'var(--background-secondary)',
-                boxShadow: '0 4px 16px var(--shadow-md)',
-              }}
-            >
-              <div className="text-4xl mb-3">🎨</div>
-              <h3
-                className="text-xl font-bold mb-3"
-                style={{ color: 'var(--color-purple)' }}
-              >
-                畫面設計小工人
-              </h3>
-              <p
-                className="text-xl leading-relaxed"
-                style={{ color: 'var(--text-secondary)' }}
-              >
-                把前面得到的訊息整理成一段畫面說明，再交給圖像生成的部分，讓貼圖真正「長出來」。
-              </p>
-            </div>
+              在之後的課程裡，我們會：
+            </p>
+            <ul className="list-disc list-inside mb-4 space-y-2" style={{ color: 'var(--text-secondary)' }}>
+              <li>由一張貼圖，變成一組同一風格貼圖，然後試試在不同的情境，使用不同的貼圖；</li>
+              <li>說說為什麼有時候貼圖會「畫錯樣」，例如數量畫錯、表情有點奇怪，那並不是你不會用，而是模型本身的限制；</li>
+            </ul>
           </div>
 
           <div
-            className="p-4 rounded-2xl"
+            className="p-6 rounded-3xl"
             style={{
-              backgroundColor: 'var(--background-darker)',
-              boxShadow: '0 2px 8px var(--shadow)',
+              background: 'linear-gradient(90deg, var(--gradient-purple-start) 0%, var(--gradient-blue-end) 100%)',
+              boxShadow: '0 8px 32px rgba(140, 80, 200, 0.25)',
             }}
           >
             <p
-              className="text-xl leading-relaxed"
-              style={{ color: 'var(--text-secondary)' }}
+              className="text-lg leading-relaxed mb-4 text-white"
             >
-              💡 這些工作可以由不同的 AI 模型分開處理，而今天，大型語言模型把很多能力整合在同一個大腦裡，再加上圖像模型，才成為你現在看到的體驗。
+              📧 如果你希望在第二課、第三課開放時，以及 slowAI App 正式上架時，第一時間收到通知，可以在下方留下你的電郵。
             </p>
+            <p
+              className="text-base leading-relaxed mb-6 text-white/90"
+            >
+              我會在你準備好的時候，和你一起慢慢走向下一步。🌿
+            </p>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="px-8 py-4 rounded-2xl font-semibold text-lg transition-all hover:scale-105 shadow-lg"
+              style={{
+                backgroundColor: 'white',
+                color: 'var(--color-purple)',
+                boxShadow: '0 4px 16px rgba(255, 255, 255, 0.3)',
+              }}
+            >
+              訂閱通知
+            </button>
           </div>
         </section>
 
-        <LessonNavigation currentPage={5} totalPages={6} lessonNumber={1} />
+        <LessonNavigation currentPage={5} totalPages={5} lessonNumber={1} />
       </div>
     </div>
   );
