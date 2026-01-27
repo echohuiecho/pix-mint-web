@@ -29,13 +29,21 @@ export async function GET(request: NextRequest) {
     // Determine content type from response or default to jpeg
     const contentType = response.headers.get('content-type') || 'image/jpeg';
 
+    // Encode filename for proper handling across browsers
+    const filename = 'reference-image.jpg';
+    const encodedFilename = encodeURIComponent(filename);
+
     // Return the image with proper headers for download
+    // Using both filename and filename* for better browser compatibility
     return new NextResponse(imageBuffer, {
       status: 200,
       headers: {
         'Content-Type': contentType,
-        'Content-Disposition': `attachment; filename="reference-image.jpg"`,
+        'Content-Disposition': `attachment; filename="${filename}"; filename*=UTF-8''${encodedFilename}`,
+        'Content-Length': imageBuffer.byteLength.toString(),
         'Cache-Control': 'public, max-age=3600',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET',
       },
     });
   } catch (error) {

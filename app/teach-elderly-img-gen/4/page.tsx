@@ -26,6 +26,9 @@ export default function TeachElderlyImgGenPage4() {
     const imageUrl = 'https://uploads-pixmint.sgp1.cdn.digitaloceanspaces.com/uploads-pixmint-1759585587760/ai-generated-images/ChatGPT%20Image%20Jan%2027,%202026,%2004_52_34%20PM_converted.jpg';
     const filename = 'reference-image.jpg';
 
+    // Detect mobile devices
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
     try {
       setDownloading(true);
 
@@ -39,25 +42,57 @@ export default function TeachElderlyImgGenPage4() {
 
       const blob = await response.blob();
 
-      // Create a blob URL
-      const blobUrl = window.URL.createObjectURL(blob);
+      // For mobile: try Web Share API first (allows saving to photos/gallery)
+      if (isMobile && navigator.share) {
+        try {
+          // Convert blob to File for sharing
+          const file = new File([blob], filename, { 
+            type: blob.type || 'image/jpeg' 
+          });
+          
+          // Check if Web Share API supports files
+          if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            await navigator.share({
+              files: [file],
+              title: filename,
+            });
+            setDownloading(false);
+            return;
+          }
+        } catch (shareError: any) {
+          // If Web Share API fails or doesn't support files, continue to fallback
+          console.log('Web Share API not available or failed:', shareError);
+        }
+      }
 
-      // Create a temporary anchor element and trigger download
+      // Fallback for both mobile and desktop: use blob download
+      const blobUrl = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = blobUrl;
       link.download = filename;
+      
+      // For mobile, also set target to ensure it works
+      if (isMobile) {
+        link.target = '_blank';
+      }
+      
+      link.style.display = 'none';
       document.body.appendChild(link);
       link.click();
 
-      // Clean up
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(blobUrl);
+      // Clean up after a delay
+      setTimeout(() => {
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(blobUrl);
+        setDownloading(false);
+      }, 100);
 
-      setDownloading(false);
     } catch (err) {
       console.error('Failed to download image:', err);
       setDownloading(false);
-      // Fallback: open in new tab if download fails
+      
+      // Final fallback: open in new tab
+      // On mobile, this allows user to long-press and save image
       window.open(imageUrl, '_blank');
     }
   };
