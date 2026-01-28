@@ -8,7 +8,7 @@ export default function TeachElderlyImgGenPage4() {
   const [copied, setCopied] = useState(false);
   const [downloading, setDownloading] = useState(false);
 
-  const prompt = `場景是香港城市街景，主角是一群老人家
+  const prompt = `場景是香港城市街景，主角是一群人
 
 風格：吉卜力風`;
 
@@ -23,7 +23,7 @@ export default function TeachElderlyImgGenPage4() {
   };
 
   const handleDownload = async () => {
-    const imageUrl = 'https://uploads-pixmint.sgp1.cdn.digitaloceanspaces.com/uploads-pixmint-1759585587760/ai-generated-images/ChatGPT%20Image%20Jan%2027,%202026,%2004_52_34%20PM_converted.jpg';
+    const imageUrl = 'https://uploads-pixmint.sgp1.cdn.digitaloceanspaces.com/uploads-pixmint-1759585587760/ai-generated-images/WhatsApp%20Image%202026-01-28%20at%2012.13.37%20PM.jpeg';
     const filename = 'reference-image.jpg';
 
     // Detect mobile devices
@@ -46,10 +46,10 @@ export default function TeachElderlyImgGenPage4() {
       if (isMobile && navigator.share) {
         try {
           // Convert blob to File for sharing
-          const file = new File([blob], filename, { 
-            type: blob.type || 'image/jpeg' 
+          const file = new File([blob], filename, {
+            type: blob.type || 'image/jpeg'
           });
-          
+
           // Check if Web Share API supports files
           if (navigator.canShare && navigator.canShare({ files: [file] })) {
             await navigator.share({
@@ -70,12 +70,12 @@ export default function TeachElderlyImgGenPage4() {
       const link = document.createElement('a');
       link.href = blobUrl;
       link.download = filename;
-      
+
       // For mobile, also set target to ensure it works
       if (isMobile) {
         link.target = '_blank';
       }
-      
+
       link.style.display = 'none';
       document.body.appendChild(link);
       link.click();
@@ -90,7 +90,7 @@ export default function TeachElderlyImgGenPage4() {
     } catch (err) {
       console.error('Failed to download image:', err);
       setDownloading(false);
-      
+
       // Final fallback: open in new tab
       // On mobile, this allows user to long-press and save image
       window.open(imageUrl, '_blank');
